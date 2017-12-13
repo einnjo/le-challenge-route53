@@ -35,10 +35,9 @@ Challenge.create = function (options) {
     // passed as an option. see https://github.com/thadeetrompetter/le-challenge-route53/issues/1
     hostedZone: getZoneIDByName(zone)
   }));
-  // AWS authentication is loaded from config file if its path is provided and
-  // the file exists.
-  if(opts.AWSConfigFile && fs.existsSync(opts.AWSConfigFile)){
-    route53Config.loadFromPath(opts.AWSConfigFile);
+  // Custom route53 configuration.
+  if(opts.route53Config){
+    route53Config.update(opts.route53Config);
   }
 
   return {

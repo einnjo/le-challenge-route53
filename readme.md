@@ -32,7 +32,7 @@ node-letsencrypt for each hosted zone.
 
 ```javascript
 var leChallenge = require('le-challenge-route53').create({
-  AWSConfigFile: '~/path/to/aws-config-file', // Optional alternative AWS credentials file to use.
+  route53Config: {region: 'us-east-1'} // custom route53 configuration 
   zone: 'example.com' // required
   delay: 20000, // ms to wait before allowing letsencrypt to check dns record (20000 ms is the default)
   debug: false
